@@ -1,6 +1,6 @@
-# cd-deploy
+# py-deploy
 
-## Base platform for Cloudevel® learning products.
+## Base platform for Pythonista® learning products.
 
 https://www.pythonista.io/descargas
 Pythonista® 
