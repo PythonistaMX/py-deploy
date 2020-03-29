@@ -2,7 +2,7 @@
 
 sudo apt update 
 sudo apt dist-upgrade -y
-sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential openjdk-11-jdk ant maven -y 
+sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim libapache2-mod-php python3-dev unzip wget w3m build-essential -y 
 sudo apt purge cloud-init -y 
 sudo apt clean
 
@@ -29,7 +29,7 @@ npm install -g ijavascript
 ijsinstall
 
 mkdir $HOME/ide
-cp package-java.json $HOME/ide/package.json
+cp package.json $HOME/ide/package.json
 cd $HOME/ide/
 yarn
 yarn theia build

@@ -3,7 +3,7 @@
     "theia": {
         "frontend": {
             "config": {
-                "applicationName": "Theia IDE for Cloudevel",
+                "applicationName": "Theia IDE for Pythonista",
                 "preferences": {
                     "files.enableTrash": false
                 }
