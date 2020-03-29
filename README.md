@@ -2,11 +2,10 @@
 
 ## Base platform for Cloudevel® learning products.
 
-https://cloudevel/downloads/base/view
+https://www.pythonista.io/descargas
+Pythonista® 
 
-Cloudevel® 
-
-https://cloudevel.com
+https://www.pythonista.io
 
 ## READ THIS!!!
 
