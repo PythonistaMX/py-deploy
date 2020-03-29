@@ -6,25 +6,15 @@ sudo apt install apache2 mysql-server php-zip zip php-curl php-mysql tree mc vim
 sudo apt purge cloud-init -y 
 sudo apt clean
 
-wget https://services.gradle.org/distributions/gradle-6.2.2-bin.zip
-sudo mkdir /opt/gradle
-sudo unzip -d /opt/gradle gradle-6.2.2-bin.zip
-rm gradle-6.2.2-bin.zip
-export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
-echo "export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin" >> $HOME/.bashrc
-
 wget https://bootstrap.pypa.io/get-pip.py
 sudo -H python3 get-pip.py
 rm get-pip.py
-sudo -H pip install notebook bash-kernel
-python3 -m bash_kernel.install
-mkdir ijava
-cd ijava
-wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
-unzip ijava-1.3.0.zip
-sudo -H python3 install.py
-cd ..
-rm -rf ijava
+sudo -H pip install virtualenv
+mkdir $HOME/pythonista
+virtualenv $HOME/pythonista
+source $HOME/pythonista/bin/activate
+pip install notebook bash-kernel
+python -m bash_kernel.install
 jupyter notebook --generate-config
 cp jupyter_notebook_config.json $HOME/.jupyter/
 
@@ -56,7 +46,7 @@ echo -e "[Unit]\nDescription=Theia IDE\n\n[Service]\nType=simple\nPIDFile=/run/t
 sudo mv $HOME/theia.service /lib/systemd/system/
 sudo systemctl enable theia.service
 
-echo -e "#! /bin/bash\nsource $HOME/.nvm/nvm.sh\njupyter notebook --ip=0.0.0.0 --no-browser" > $HOME/jupyter.sh
+echo -e "#! /bin/bash\nsource $HOME/pythonista/bin/activate\nsource $HOME/.nvm/nvm.sh\njupyter notebook --ip=0.0.0.0 --no-browser" > $HOME/jupyter.sh
 chmod +x $HOME/jupyter.sh
 echo -e "[Unit]\nDescription=Jupyter Notebook\n\n[Service]\nType=simple\nPIDFile=/run/jupyter.pid\nExecStart=/home/oi/jupyter.sh\nUser=oi\nGroup=oi\nWorkingDirectory=/opt/oi/\nRestart=always\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target" > jupyter.service
 sudo mv jupyter.service /lib/systemd/system/
